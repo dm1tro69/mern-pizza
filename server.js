@@ -1,12 +1,18 @@
 import express from 'express'
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
+import Pizza from "./models/pizzaModel.js";
+import pizzaRoute from "./routes/pizzaRoute.js";
+
 
 dotenv.config()
 const app = express()
+app.use(express.json())
 mongoose.set('strictQuery', false)
 
 const PORT = 4000
+
+app.use('/api/pizzas', pizzaRoute)
 
 const start = async () => {
     try {

@@ -1,16 +1,23 @@
 import React, {useState} from 'react';
 import {Button, Modal} from 'react-bootstrap'
+import {useDispatch} from "react-redux";
+import {addToCart} from "../actions/cartActions";
 
 const Pizza = ({pizza}) => {
     const [quantity, setQuantity] = useState(1)
     const [variant, setVariant] = useState('small')
     const [show, setShow] = useState(false)
+    const dispatch = useDispatch()
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const addToCarts = () => {
+       dispatch(addToCart(pizza, quantity, variant))
+    }
+
     return (
-        <div style={{margin: '70px'}} className={'shadow-lg p-3 mb-5 bg-white rounded'}>
+        <div className={'shadow-lg p-3 mb-5 bg-white rounded'}>
            <div onClick={handleShow}>
                <h1>{pizza.name}</h1>
                <img src={pizza.image} alt="img" className={'img-fluid'} style={{height: '200px', width: '200px'}}/>
@@ -49,7 +56,7 @@ const Pizza = ({pizza}) => {
                      <h1 className={'mt-1'}>Price: {pizza.prices[0][variant]*quantity}</h1>
                  </div>
                 <div className={'m-1 w-100'}>
-                   <button className={'btn'}>ADD TO CART</button>
+                   <button className={'btn'} onClick={addToCarts}>ADD TO CART</button>
                 </div>
             </div>
 
