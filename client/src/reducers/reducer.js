@@ -8,8 +8,4 @@ export const reducer = combineReducers({
     cart: cartReducer
 })
 
-const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')): []
 
-export const initialState = {
-     cartItems
-}

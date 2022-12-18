@@ -1,12 +1,13 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
     const {cartItems} = useSelector(state => state.cart)
     const dispatch = useDispatch()
     return (
         <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-white rounded">
-            <a className="navbar-brand" href="/">PIZZA</a>
+            <Link className="navbar-brand" to="/">PIZZA</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -14,10 +15,10 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item ">
-                        <a className="nav-link" href="/">Login </a>
+                        <Link className="nav-link" to="/login">Login </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/">Cart {cartItems?.length}</a>
+                        <Link className="nav-link" to="/cart">Cart {cartItems?.length}</Link>
                     </li>
 
                 </ul>
