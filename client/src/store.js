@@ -5,9 +5,12 @@ import {reducers} from "./reducers/reducer";
 
 
 const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')): []
+const currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('cartItems')): null
 
  const initialState = {
-    cartReducer: {cartItems}
+    userReducer: {
+        currentUser
+    }
 }
 
 export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))

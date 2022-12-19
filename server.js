@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv'
 import Pizza from "./models/pizzaModel.js";
 import pizzaRoute from "./routes/pizzaRoute.js";
+import userRoute from "./routes/userRoute.js";
 
 
 dotenv.config()
@@ -13,6 +14,7 @@ mongoose.set('strictQuery', false)
 const PORT = 4000
 
 app.use('/api/pizzas', pizzaRoute)
+app.use('/api/users', userRoute)
 
 const start = async () => {
     try {

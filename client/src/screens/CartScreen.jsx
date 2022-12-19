@@ -35,7 +35,7 @@ const CartScreen = () => {
              </div>
              <div className="col-md-4">
                   <h2 style={{fontSize: '45px'}}>Total: {subTotal}</h2>
-                 <button className={'btn'}>CHECK OUT</button>
+                 <button className={'btn'} disabled={subTotal === 0}>CHECK OUT</button>
              </div>
          </div>
         </div>
