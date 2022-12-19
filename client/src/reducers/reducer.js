@@ -3,7 +3,7 @@ import {getAllPizzaReducer} from "./pizzaReducers";
 import {cartReducer} from "./cartReducers";
 
 
-export const reducer = combineReducers({
+export const reducers = combineReducers({
     allPizza: getAllPizzaReducer,
     cart: cartReducer
 })

@@ -1,10 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import {addToCart, deleteFromCart} from "../actions/cartActions";
 
 const CartScreen = () => {
     const {cartItems} = useSelector(state => state.cart)
-    console.log(cartItems)
     const dispatch = useDispatch()
+    const subTotal = cartItems.reduce((acc, cur) => acc + cur.price, 0)
+
     return (
         <div>
          <div className="row justify-content-center">
@@ -16,23 +18,24 @@ const CartScreen = () => {
                             <h1>{cart.name}  [{cart.varient}]</h1>
                              <h1>Price: {cart.quantity} * {cart.prices[0][cart.varient]} = {cart.price}</h1>
                              <h1 style={{display: 'inline'}}>Quantity: </h1>
-                             <i className={'fa fa-plus'}></i>
-                             <b>{cart.quantity}</b>
-                             <i className={'fa fa-minus'}></i>
+                             <i className={'fa fa-plus'} onClick={()=> {dispatch(addToCart(cart, +cart.quantity+1, cart.varient))}}></i>
+                             <b>{cart.quantity+1}</b>
+                             <i className={'fa fa-minus'}  onClick={()=> {dispatch(addToCart(cart, +cart.quantity-1, cart.varient))}}></i>
                              <hr/>
                          </div>
                          <div className={'m-1 w-100'}>
                              <img src={cart.image} alt="img" style={{height: '80px', width: '80px'}}/>
                          </div>
                          <div className={'m-1 w-100'}>
-                             <i className={'fa fa-trash mt-5'}></i>
+                             <i className={'fa fa-trash mt-5'} onClick={()=>{dispatch(deleteFromCart(cart))}}></i>
                          </div>
                      </div>
                  ))}
 
              </div>
              <div className="col-md-4">
-
+                  <h2 style={{fontSize: '45px'}}>Total: {subTotal}</h2>
+                 <button className={'btn'}>CHECK OUT</button>
              </div>
          </div>
         </div>
