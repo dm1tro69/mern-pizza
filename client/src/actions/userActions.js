@@ -1,7 +1,7 @@
 import {
     USER_LOGIN_FAILED,
     USER_LOGIN_REQUEST,
-    USER_LOGIN_SUCCESS,
+    USER_LOGIN_SUCCESS, USER_LOGOUT,
     USER_REGISTER_FAILED,
     USER_REGISTER_REQUEST
 } from "../reducers/constans";
@@ -25,7 +25,11 @@ export const loginUser = (user) => async (dispatch) =>{
 
        dispatch({type: USER_LOGIN_SUCCESS, payload: data})
 
+
    }catch (e) {
        dispatch({type: USER_LOGIN_FAILED, payload: e.message})
    }
+}
+export const logOut = () => (dispatch) => {
+    dispatch({type: USER_LOGOUT})
 }

@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import {useDispatch} from "react-redux";
 import {registerUser} from "../actions/userActions";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const RegisterScreen = () => {
     const [name, setName] = useState('')
@@ -62,6 +62,8 @@ const RegisterScreen = () => {
                             required
                         />
                         <button className={'btn mt-3'} onClick={register}>REGISTER</button>
+                        <br/>
+                        <Link className={'mt-2'} style={{color: 'black'}} to={'/login'}>Click here to login</Link>
                     </div>
                 </div>
             </div>
